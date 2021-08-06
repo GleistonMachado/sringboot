@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://thymeleaf.org/"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout/"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	layout:decorator="layout">
+
+	<th:block layout:fragment="content">
+		
+		<div class="col-xs-12 col-md-12">
+			<h2>
+				Hello, Welcome!
+			</h2>
+			
+			<div class="mt-5">
+				<form th:action="@{/people/search}" th:method="post" th:objct="${person}">
+					
+					<div class="row">
+						<div class="form-group col-xs-12 col-md-6">
+							<input type="text" name="name"  placeholder="Enter user name:" class="form-control"/>
+						</div>
+						<div class="form-group col-xs-12 col-md-6">
+							<button type="submit" id="submitButton" class="btn btn-danger">Search</button>
+						</div>
+					</div>
+					
+				</form>
+			</div>
+			<p th:text="${msg}"></p>
+			
+		</div>
+		
+		<div th:if="${person}">
+			<div class="col-xs-12 col-md-12">
+				<h5 class="mt-4 mb-4">Listing persons</h5>
+				
+				<table class="table table-hover">
+				  <thead class="thead-light">
+				    <tr>
+				      <th scope="col">Name</th>
+				      <th scope="col">Email</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="person : ${person}">
+				      	<td scope="col" th:text="${person.name}"></td>
+						<td scope="col" th:text="${person.email}"></td>
+				    </tr>
+				  </tbody>
+				</table>
+				
+			</div>
+		</div>
+	</th:block>
+</html>

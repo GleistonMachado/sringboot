@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://thymeleaf.org/"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout/"
+	layout:decorator="layout"
+>
+
+	<th:block layout:fragment="content">
+		<div class="col-xs-12 col-md-12 text-center">
+			<div class="card">
+				<div class="card-header">
+					Edit a person
+				</div>
+				
+				<div class="card-block mt-3">
+					<form th:action="@{/people/{id}(id = ${person.id})}" th:object="${person}" action="#" th:method="put">
+					
+						<input type="hidden" name="_method" value="put" />
+						<input type="hidden" th:field="*{id}" />
+					
+						<div class="row">
+							<div class="form-group col-xs-12 col-md-6">
+								<input type="text" th:field="*{name}" name="name"  placeholder="Enter user name:" class="form-control"/>
+							</div>
+							
+													
+							<div class="form-group">
+								<input type="text" th:field="*{email}" name="email" placeholder="Enter user e-mail:" class="form-control"/>
+							</div>
+						</div>
+									
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">Save</button>
+							<a href="/people/list" class="btn btn-secondary">Back</a>
+						</div>
+					</form>				
+				</div>
+				
+			</div>
+		</div>
+	</th:block>
+
+</html>
