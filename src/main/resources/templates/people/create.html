@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://thymeleaf.org/"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout/"
+	layout:decorator="layout"
+>
+
+	<th:block layout:fragment="content">
+		<div class="col-xs-12 col-md-12 text-center">
+			<div class="card">
+				<div class="card-block mt-3">
+					<form th:action="@{/people/save}" th:object="${person}" th:method="post" class="col s12">
+					
+						<div class="row">
+							<div class="input-field col s6">
+								<input type="text" id="name" th:field="*{name}" name="name" placeholder="Enter user name:" class="validate"/>
+								 <label for="name">Full Name</label>
+							</div>
+							
+							<div class="input-field col s6">
+								<input type="text" id="email" th:field="*{email}" name="email" placeholder="Enter user e-mail:" class="form-control"/>
+								<label for="email">E-mail</label>
+							</div>
+						</div>
+						
+				
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">Save</button>
+							<a href="/" class="btn btn-secondary">Back</a>
+						</div>
+					</form>				
+				</div>
+				
+			</div>
+		</div>
+	</th:block>
+
+</html>
